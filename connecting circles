@@ -1,0 +1,32 @@
+var circle = function(startx,starty,startxdir,startydir,startsize){
+  this.x = startx;
+  this.y = starty;
+  this.xdir = startxdir;
+  this.ydir = startydir;
+  this.size = startsize;
+};
+
+var circles = [];
+rectMode(CENTER);
+
+for (var i = 0 ; i < 30 ; i++){
+circles[i] = new circle(random(0,width),random(0,height),random(-0.5,0.5),random(-0.5,0.5),random(3,7)*10);    
+}
+
+var draw = function() {
+    background(255, 255, 255);
+    for (var i = 0 ; i < 30 ; i++){
+    ellipse(circles[i].x,circles[i].y,circles[i].size,circles[i].size);   
+    rect(circles[i].x,circles[i].y,5,5);
+    circles[i].x += circles[i].xdir;
+    circles[i].y += circles[i].ydir;
+    if (circles[i].x<1||circles[i].x>width-1){
+     circles[i].xdir*=-1;
+        }
+    if (circles[i].y<1||circles[i].y>height-1){
+     circles[i].y*=-1;
+        }   
+    }
+        
+    
+};
